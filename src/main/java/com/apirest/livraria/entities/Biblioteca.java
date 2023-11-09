@@ -37,9 +37,9 @@ public class Biblioteca {
     public void setLivros(Set<Livro> livros) {
         this.livros = livros;
 
-        for(Livro livro: livros){
+        for (Livro livro : livros) {
             livro.setBiblioteca(this);
         }
     }
-    
+
 }

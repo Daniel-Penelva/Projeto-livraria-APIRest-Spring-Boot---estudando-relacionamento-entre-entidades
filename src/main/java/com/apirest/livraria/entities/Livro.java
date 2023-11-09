@@ -14,12 +14,14 @@ import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "livros", uniqueConstraints = {@UniqueConstraint(columnNames = {"nome"})})
-@Data
+@Table(name = "livros", uniqueConstraints = { @UniqueConstraint(columnNames = { "nome" }) })
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Livro {
@@ -31,10 +33,10 @@ public class Livro {
     @NotNull
     private String nome;
 
-    //Muitos livros pode pertencer a uma biblioteca.
+    // Muitos livros pode pertencer a uma biblioteca.
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name="biblioteca_id")
+    @JoinColumn(name = "biblioteca_id")
     @JsonProperty(access = Access.WRITE_ONLY)
     private Biblioteca biblioteca;
-    
+
 }
